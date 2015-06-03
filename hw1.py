@@ -12,18 +12,18 @@ def anagram(strings):
   f.close()
   line1=dic.split('\n')
   d={}
+  dic={}
   for line in line1[:5]:
     line=line.lower()
     name=list(line)
     line2=sorted(name)
     line2="".join(line2)
     d[line]=line2
-    print d
-    dic={}
     for i in range(len(line2)):
       dic.setdefault(line2[i],0)
       dic[line2[i]]+=1
-      print dic
+  print d
+  print dic
 
 strings="Hello"  
 print anagram(strings)
