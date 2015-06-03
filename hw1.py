@@ -6,24 +6,30 @@ def anagram(strings):
   strings=strings.lower()
   strings=list(strings)
   a=sorted(strings)
-  b=len(strings)
+  word=count(a)
   f=open("/usr/share/dict/words")
   dic=f.read()
   f.close()
   line1=dic.split('\n')
   d={}
-  dic={}
-  for line in line1[:5]:
+  print line1[5:10]
+  for line in line1[5:10]:
     line=line.lower()
     name=list(line)
     line2=sorted(name)
     line2="".join(line2)
     d[line]=line2
-    for i in range(len(line2)):
-      dic.setdefault(line2[i],0)
-      dic[line2[i]]+=1
-  print d
-  print dic
+  long=sorted(d.items(), key=lambda x:len(line[1]), reverse=True) 
+  print long
+
+def count(word):
+  d={}
+  for i in range(len(word)):
+    d.setdefault(word[i],0)
+    d[word[i]]+=1
+  return d
+
+
 
 strings="Hello"  
 print anagram(strings)
