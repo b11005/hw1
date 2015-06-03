@@ -19,8 +19,8 @@ def anagram(strings):
     line2=sorted(name)
     line2="".join(line2)
     d[line]=line2
-  long=sorted(d.items(), key=lambda x:len(line[1]), reverse=True) 
-  print long
+  for char in sorted(d.items(), key=lambda x: len(x[0]), reverse=True):
+    print char
 
 def count(word):
   d={}
