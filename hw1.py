@@ -20,17 +20,20 @@ def anagram(string):
     line2="".join(line2)
     d[line]=line2
   d=sorted(d.items(), key=lambda x:len(x[1]), reverse=True)
-  for i in d:
+  for i in d[10:20]:
     result=0
+    nums=len(i[0])
     temp=count(i[1])
     for k,v in temp.items():
       if k not in key:
         break
-
-      else:
+      elif v>word[k]: 
+        break
+      else: 
         result+=1
-    if result>=num:
-      return i[0]
+    if result<=num:
+       return i[0]
+
 
 def count(word):
   d={}
@@ -39,5 +42,5 @@ def count(word):
   return d
 
 
-strings="world"
+strings="helloworld"
 print anagram(strings)
