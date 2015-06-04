@@ -7,6 +7,7 @@ def anagram(string):
   word=count(a)
   key=word.keys()
   value=word.values()
+  num=len(value)
   f=open("/usr/share/dict/words")
   dic=f.read()
   f.close()
@@ -21,14 +22,15 @@ def anagram(string):
   d=sorted(d.items(), key=lambda x:len(x[1]), reverse=True)
   for i in d:
     result=0
-    num=len(i[0])
     temp=count(i[1])
     for k,v in temp.items():
-      if key==k and value>=v:
+      if k not in key:
+        break
 
-
-
-
+      else:
+        result+=1
+    if result>=num:
+      return i[0]
 
 def count(word):
   d={}
@@ -37,5 +39,5 @@ def count(word):
   return d
 
 
-strings="Helloworld"
+strings="world"
 print anagram(strings)
