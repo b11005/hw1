@@ -1,35 +1,46 @@
-""" This buffer is for notes you don't want to save, and for Lisp evaluation.
- If you want to create a file, visit that file with C-x C-f,
- then enter the text in that file's own buffer."""
-
-def anagram(strings):
-  strings=strings.lower()
-  strings=list(strings)
-  a=sorted(strings)
+def anagram(string):
+  string=string.lower()
+  string=string.strip()
+  string=list(string)
+  a=sorted(string)
   word=count(a)
+  print word
+  key=word.keys()
+  value=word.values()
   f=open("/usr/share/dict/words")
   dic=f.read()
   f.close()
   line1=dic.split('\n')
   d={}
-  print line1[5:10]
-  for line in line1[5:10]:
+  result=[]
+  for line in line1:
     line=line.lower()
-    name=list(line)
-    line2=sorted(name)
+    string=list(line)
+    line2=sorted(string)
     line2="".join(line2)
     d[line]=line2
-  for char in sorted(d.items(), key=lambda x: len(x[0]), reverse=True):
-    print char
+  d=sorted(d.items(), key=len, reverse=True)
+  for i in d:
+    temp=count(i[1])
+    print temp
+    for k,v in temp.items():
+      if key==k and value>=v:
+        return k
+
+ 
+
+
+
+
 
 def count(word):
   d={}
   for i in range(len(word)):
-    d.setdefault(word[i],0)
-    d[word[i]]+=1
+    d[word[i]]=d.get(word[i],0)+1
   return d
 
+def number(word):
+  return len(word)
 
-
-strings="Hello"  
+strings="Helloworld"
 print anagram(strings)
